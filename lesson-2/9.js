@@ -7,9 +7,13 @@
 
 ////////////////// Решение //////////////////
 const arr = [1, 2, 3, 4, 5, 6];
-const length = arr.length - 1;
-const newArray = [];
 
-for (let i = length; i >= 0; i--) {
-    newArray[length - i] = arr[i];
+for (let i = 0, endI = arr.length - 1; i < arr.length - 1; i++) {
+    for (let j = 0, endJ = endI - i; j < endJ; j++) {
+        if (arr[j] < arr[j + 1]) {
+            let swap = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = swap;
+        }
+    }
 }
