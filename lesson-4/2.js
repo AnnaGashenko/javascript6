@@ -16,26 +16,28 @@
  * - Свойство salary обязательно должно быть геттером.
  */
 
-const person = {
-    rate : null,
-    get salary(){
-        const now = new Date();
-        const dayToday = now.getDate();
-        if(this.rate && typeof this.rate === 'number') {
-            return this.rate * dayToday;
-        } else {
-            return 0;
-        }
-    }
-};
+const person = {};
 
-Object.defineProperty(person, 'rate', {
-    enumerable: false,
-    configurable: false,
-});
-Object.defineProperty(person, 'salary', {
-    enumerable: false,
-    configurable: false,
+Object.defineProperties(person, {
+    rate: {
+        value: null,
+        enumerable: false,
+        writable: true,
+        configurable: false,
+    },
+    salary: {
+        enumerable: false,
+        configurable: false,
+        get() {
+            const now = new Date();
+            const dayToday = now.getDate();
+            if(this.rate && typeof this.rate === 'number') {
+                return this.rate * dayToday;
+            } else {
+                return 0;
+            }
+        },
+    },
 });
 
 // Решение
