@@ -13,7 +13,7 @@
 const f = function () {
     let result = 0;
 
-    for (item of arguments) {
+    for (let item of arguments) {
         if(typeof item !== 'number') {
             throw new Error('В качестве входного аргумента был передан не числовой тип');
         }

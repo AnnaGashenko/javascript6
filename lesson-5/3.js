@@ -15,6 +15,8 @@ const f = function (a, b, c) {
         throw new Error(`Второй аргумент ${b} не число`);
     } else if(typeof c !== 'number'){
         throw new Error(`Третий аргумент ${c} не число`);
+    } else if(c === 0){
+        throw new Error(`Третий аргумен не может быть 0`);
     }
     const result = (a - b) / c;
 
