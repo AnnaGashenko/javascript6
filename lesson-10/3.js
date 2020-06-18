@@ -26,7 +26,6 @@
 
 const calculateAdvanced = (...rest) => {
     const errors = [];
-    const log = {};
     let res = null;
 
     rest.forEach((func, index) => {
@@ -55,10 +54,10 @@ const calculateAdvanced = (...rest) => {
         }
     });
 
-    log.value = res;
-    log.errors = errors;
-
-    return log;
+    return {
+        value : res,
+        errors : errors
+    };
 
 };
 

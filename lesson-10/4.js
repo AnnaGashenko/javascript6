@@ -31,15 +31,15 @@
 const compose = (...rest) => {
 
     return function(message = '') {
-        const array = rest.reverse();
-        let result = message;
 
-        for(let func of array) {
+        const result = rest.reduceRight(function(previousValue, func) {
             if(typeof func !== 'function') {
                 throw new Error('Params should be a function');
             }
-            result = func(result);
-        }
+
+            return func(previousValue);
+
+        }, message);
 
         return result;
     };

@@ -30,13 +30,8 @@ const bind = (func, obj, ...rest) => {
         throw new Error('Second param should be an object');
     }
 
-    const greeting = rest[0];
-    const message = rest[1];
-
-    obj.getName = func;
-
     return () => {
-        return obj.getName(greeting, message);
+        return getName.apply(obj, rest);
     };
 };
 
