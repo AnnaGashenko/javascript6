@@ -29,18 +29,27 @@ const postpone = function (start, end, delay) {
         throw new Error('Third param should be a number');
     }
 
-    setTimeout(() => {
-        if(start < end) {
-            for(let i = start; i <= end; i++){
-                console.log(i);
-            }
-        } else {
-            for(let i = start; i >= end; i--){
-                console.log(i);
-            }
+    let init = 1;
 
+    const counter = function (i) {
+        setTimeout(function () {
+            console.log(i);
+        }, delay * init);
+
+        init++;
+    };
+
+    if(start < end) {
+        for (let i = start; i <= end; i++) {
+            counter(i);
         }
-    }, delay);
+    } else {
+        for(let i = start; i >= end; i--){
+            counter(i);
+        }
+    }
+
+
 };
 
 try {
@@ -55,6 +64,5 @@ try {
 } catch(error) {
     console.log(`${error.name}: ${error.message}`);
 }
-
 
 exports.postpone = postpone;
